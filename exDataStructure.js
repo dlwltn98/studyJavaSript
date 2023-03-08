@@ -110,3 +110,67 @@ function count(obj) {
   };
   
   console.log( count(user) ); // 2
+
+
+/**
+ * 자료구조와 자료형 : 숫자형
+ * 3-1. 수를 입력받아 덧셈하기
+ *  https://ko.javascript.info/number
+ */
+let a = +prompt("The first number?", "");
+let b = +prompt("The second number?", "");
+
+console.log(a+b);
+
+/**
+ * 자료구조와 자료형 : 숫자형
+ * 3-2. A ramdom integer from min to max
+ */
+function randomInteger(min, max) {
+  // here rand is from min to (max+1)
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
+}
+
+alert( randomInteger(1, 3) );
+alert( randomInteger(1, 5) ); 
+alert( randomInteger(1, 5) ); 
+alert( randomInteger(1, 5) ); 
+
+/**
+ * 자료구조와 자료형 : 구조 분해 할당
+ * 6-1. 구조 분해 할당
+ * https://ko.javascript.info/destructuring-assignment
+ */
+let user = { name: "John", years: 30 };
+
+let {name, years:age, isAdmin=false} = user;
+
+alert( name ); // John
+alert( age ); // 30
+alert( isAdmin ); // false
+
+/**
+ * 자료구조와 자료형 : 구조 분해 할당
+ * 6-2. 최대 급여 계산하기
+ */
+function topSalary(salaries) {
+  let max = 0;
+  let maxName = null;
+
+  for(let [name, salary] of Object.entries(salaries)) {
+    if (max < salary) {
+      max = salary;
+      maxName = name;
+    }
+  }
+  return maxName;
+}
+
+let salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+
+console.log(topSalary(salaries))
